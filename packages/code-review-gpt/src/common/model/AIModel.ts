@@ -4,7 +4,6 @@ import { retryAsync } from "ts-retry";
 import { IFeedback } from "../types";
 import { logger } from "../utils/logger";
 import { parseAttributes } from "../utils/parseAttributes";
-import { AzureGptChat } from './AzureGptChat';
 
 interface IAIModel {
   modelName: string;
@@ -18,7 +17,7 @@ interface IAIModel {
 const defaultRetryCount = 3;
 
 class AIModel {
-  private model: OpenAIChat | AzureGptChat;
+  private model: OpenAIChat;
   private retryCount: number;
 
   constructor(options: IAIModel) {
@@ -32,11 +31,17 @@ class AIModel {
         });
         break;
       case "azure":
-        this.model = new AzureGptChat({
-          apiKey: options.apiKey,
+        this.model = new OpenAIChat({
           modelName: options.modelName,
-          temperature: options.temperature
-        })
+          temperature: options.temperature,
+          configuration: { organization: options.organization },
+          azureOpenAIApiVersion: '2024-04-01-preview',
+          azureOpenAIApiKey: options.apiKey,
+          // azureOpenAIApiInstanceName
+          azureOpenAIApiDeploymentName: 'D-OAI-model-deploy',
+          azureOpenAIBasePath: 'https://d-oai-dev.openai.azure.com',
+        });
+        break;
       case "bedrock":
         throw new Error("Bedrock provider not implemented");
       default:
