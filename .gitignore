@@ -5,6 +5,7 @@ dist
 !jest.config.js
 *.d.ts
 .idea
+.env.local
 
 **/data
 
