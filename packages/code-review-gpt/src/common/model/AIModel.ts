@@ -4,6 +4,7 @@ import { retryAsync } from "ts-retry";
 import { IFeedback } from "../types";
 import { logger } from "../utils/logger";
 import { parseAttributes } from "../utils/parseAttributes";
+import { AzureGptChat } from './AzureGptChat';
 
 interface IAIModel {
   modelName: string;
@@ -17,7 +18,7 @@ interface IAIModel {
 const defaultRetryCount = 3;
 
 class AIModel {
-  private model: OpenAIChat;
+  private model: OpenAIChat | AzureGptChat;
   private retryCount: number;
 
   constructor(options: IAIModel) {
@@ -30,6 +31,12 @@ class AIModel {
           configuration: { organization: options.organization },
         });
         break;
+      case "azure":
+        this.model = new AzureGptChat({
+          apiKey: options.apiKey,
+          modelName: options.modelName,
+          temperature: options.temperature
+        })
       case "bedrock":
         throw new Error("Bedrock provider not implemented");
       default:
