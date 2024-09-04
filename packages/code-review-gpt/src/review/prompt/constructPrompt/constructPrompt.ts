@@ -42,5 +42,9 @@ export const constructPromptsArray = (
     return languageToInstructionPrompt + JSON.stringify(payload);
   });
 
-  return prompts;
+  const answerLanguage = process.env.LANGUAGE
+    ? `Answer me in ${process.env.LANGUAGE},`
+    : '';
+
+  return [...prompts, answerLanguage];
 };
