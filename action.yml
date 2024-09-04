@@ -12,6 +12,10 @@ inputs:
   GITHUB_TOKEN:
     description: 'Github token'
     required: true
+  PROVIDER:
+    description: 'The provider to use'
+    required: true
+    default: 'azure'
 runs:
   using: 'composite'
   steps:
