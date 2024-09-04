@@ -38,13 +38,9 @@ export const constructPromptsArray = (
     getLanguageName(files[0].fileName) //assume the first file is representative of the language
   );
 
-  const answerLanguage = process.env.LANGUAGE
-    ? `, Answer me in Korean, 답변은 한글로 달아줘`
-    : '';
-
   const prompts = promptPayloads.map((payload) => {
     return languageToInstructionPrompt + JSON.stringify(payload);
   });
 
-  return [...prompts, answerLanguage];
+  return prompts;
 };
