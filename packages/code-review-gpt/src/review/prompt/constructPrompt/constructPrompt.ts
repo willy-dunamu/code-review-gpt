@@ -42,9 +42,5 @@ export const constructPromptsArray = (
     return languageToInstructionPrompt + JSON.stringify(payload);
   });
 
-  const answerLanguage = process.env.LANGUAGE
-    ? `, 그리고 앞의 질문에 한글로 답해줘,`
-    : '';
-
-  return [...prompts, answerLanguage];
+  return prompts;
 };
