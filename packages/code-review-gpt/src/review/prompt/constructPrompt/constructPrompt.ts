@@ -38,8 +38,12 @@ export const constructPromptsArray = (
     getLanguageName(files[0].fileName) //assume the first file is representative of the language
   );
 
+  const answerLanguage = process.env.LANGUAGE
+    ? `, Answer me in ${process.env.LANGUAGE},`
+    : '';
+
   const prompts = promptPayloads.map((payload) => {
-    return languageToInstructionPrompt + JSON.stringify(payload);
+    return languageToInstructionPrompt + JSON.stringify(payload) + answerLanguage;
   });
 
   return prompts;
