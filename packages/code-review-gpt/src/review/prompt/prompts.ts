@@ -29,7 +29,7 @@ Format the response in a valid JSON format as a list of feedbacks, where the val
   }
 }
 
-The filenames and file contents to review are provided below as a list of JSON objects(Answer me in Korean):
+The filenames and file contents to review are provided below as a list of JSON objects, 답변은 한글로 적어줘. :
 
 `;
 
@@ -68,6 +68,6 @@ Format the response in a valid JSON format as a list of feedbacks, where the val
   }
 }
 
-The code to review is provided below(Answer me in Korean):
+The code to review is provided below:
 
 `;
