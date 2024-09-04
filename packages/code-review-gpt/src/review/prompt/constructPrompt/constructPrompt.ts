@@ -39,12 +39,12 @@ export const constructPromptsArray = (
   );
 
   const answerLanguage = process.env.LANGUAGE
-    ? `, Answer me in ${process.env.LANGUAGE},`
+    ? `, Answer me in Korean, 답변은 한글로 달아줘`
     : '';
 
   const prompts = promptPayloads.map((payload) => {
-    return languageToInstructionPrompt + JSON.stringify(payload) + answerLanguage;
+    return languageToInstructionPrompt + JSON.stringify(payload);
   });
 
-  return prompts;
+  return [...prompts, answerLanguage];
 };
