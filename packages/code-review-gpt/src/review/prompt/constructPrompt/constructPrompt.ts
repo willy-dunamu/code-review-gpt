@@ -43,8 +43,8 @@ export const constructPromptsArray = (
   });
 
   const answerLanguage = process.env.LANGUAGE
-    ? `Answer me in Korean,`
+    ? `Answer me in Korean: `
     : '';
 
-  return [...prompts, answerLanguage];
+  return [answerLanguage, ...prompts];
 };
