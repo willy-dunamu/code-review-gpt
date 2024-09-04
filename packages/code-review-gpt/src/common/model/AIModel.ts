@@ -37,7 +37,6 @@ class AIModel {
           configuration: { organization: options.organization },
           azureOpenAIApiVersion: '2024-04-01-preview',
           azureOpenAIApiKey: options.apiKey,
-          // azureOpenAIApiInstanceName
           azureOpenAIApiDeploymentName: 'D-OAI-model-deploy',
           azureOpenAIBasePath: 'https://d-oai-dev.openai.azure.com',
         });
