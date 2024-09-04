@@ -43,8 +43,8 @@ export const constructPromptsArray = (
   });
 
   const answerLanguage = process.env.LANGUAGE
-    ? `Answer me in Korean: `
+    ? `, 그리고 앞의 질문에 한글로 답해줘,`
     : '';
 
-  return [answerLanguage, ...prompts];
+  return [...prompts, answerLanguage];
 };
