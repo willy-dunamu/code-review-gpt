@@ -4,8 +4,6 @@ dist
 **/.cache/*.ts
 !jest.config.js
 *.d.ts
-.idea
-.env.local
 
 **/data
 

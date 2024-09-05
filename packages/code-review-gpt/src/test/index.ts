@@ -29,7 +29,7 @@ export const test = async (
       temperature: 0.0,
       apiKey: openAIApiKey,
       organization: undefined,
-      provider: "azure",
+      provider: "openai",
     })
   );
 
