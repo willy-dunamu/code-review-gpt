@@ -21,14 +21,14 @@ runs:
       with:
         node-version: 18
 
-    - name: Install Code Review GPT
+    - name: Install dependencies
       shell: bash
-      run: npm install ./packages/code-review-gpt
-    
+      run: npm install
+
     - name: Run Code Review GPT
       shell: bash
-      run: npx code-review-gpt review --ci=github --model=$MODEL --provider=azure
-      
+      run: node ./packages/code-review-gpt review --ci=github --model=$MODEL --provider=azure
+
       env:
         MODEL: ${{ inputs.MODEL }}
         OPENAI_API_KEY: ${{ inputs.OPENAI_API_KEY }}
