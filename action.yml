@@ -19,19 +19,15 @@ runs:
 
     - uses: actions/setup-node@v3
       with:
-        node-version: 20
-
-    - name: Clone Code Review GPT Repository
-      shell: bash
-      run: git clone https://github.com/willy-dunamu/code-review-gpt.git
+        node-version: 18
 
     - name: Install Code Review GPT
       shell: bash
-      run: npm install ./code-review-gpt/packages/code-review-gpt
+      run: npm install @willy-dunamu/code-review-gpt
 
     - name: Run Code Review GPT
       shell: bash
-      run: git add . && cd code-review-gpt/packages/code-review-gpt && npm start review --ci=github --model=$MODEL --provider=azure
+      run: npx @willy-dunamu/code-review-gpt review --ci=github --model=$MODEL
 
       env:
         MODEL: ${{ inputs.MODEL }}

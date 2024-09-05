@@ -22,7 +22,7 @@ const main = async () => {
     case "review": {
       const { review } = await import("./review");
       const { getReviewFiles } = await import("./common/utils/getReviewFiles");
-      const files = await getReviewFiles('github', argv.remote);
+      const files = await getReviewFiles(argv.ci, argv.remote);
       await review(argv, files, openAIApiKey);
       break;
     }
