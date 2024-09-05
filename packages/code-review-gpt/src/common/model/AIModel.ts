@@ -30,6 +30,17 @@ class AIModel {
           configuration: { organization: options.organization },
         });
         break;
+      case "azure":
+        this.model = new OpenAIChat({
+          modelName: options.modelName,
+          temperature: options.temperature,
+          configuration: { organization: options.organization },
+          azureOpenAIApiVersion: '2024-04-01-preview',
+          azureOpenAIApiKey: options.apiKey,
+          azureOpenAIApiDeploymentName: 'D-OAI-model-deploy',
+          azureOpenAIBasePath: 'https://d-oai-dev.openai.azure.com',
+        });
+        break;
       case "bedrock":
         throw new Error("Bedrock provider not implemented");
       default:

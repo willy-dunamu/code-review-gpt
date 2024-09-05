@@ -27,7 +27,7 @@ runs:
     
     - name: Run Code Review GPT
       shell: bash
-      run: npx code-review-gpt review --ci=github --model=$MODEL
+      run: npx code-review-gpt review --ci=github --model=$MODEL --provider=azure
       
       env:
         MODEL: ${{ inputs.MODEL }}
