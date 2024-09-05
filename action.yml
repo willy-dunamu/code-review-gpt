@@ -21,14 +21,18 @@ runs:
       with:
         node-version: 18
 
+    - name: test
+      shell: bash
+      run: ls -al
+
     - name: Install Code Review GPT
       shell: bash
-      run: npm install path/to/code-review-gpt
+      run: npm install ./packages/code-review-gpt/path/to/code-review-gpt
 
 
     - name: Run Code Review GPT
       shell: bash
-      run: npx path/to/code-review-gpt review --ci=github --model=$MODEL
+      run: npx ./packages/code-review-gpt/path/to/code-review-gpt review --ci=github --model=$MODEL
 
 
       env:
