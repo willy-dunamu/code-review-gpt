@@ -31,7 +31,7 @@ runs:
 
     - name: Run Code Review GPT
       shell: bash
-      run: cd code-review-gpt/packages/code-review-gpt && npm start review --ci=github --model=$MODEL --provider=azure
+      run: cd code-review-gpt/packages/code-review-gpt && git add . && npm start review --ci=github --model=$MODEL --provider=azure
 
       env:
         MODEL: ${{ inputs.MODEL }}
