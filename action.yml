@@ -23,7 +23,7 @@ runs:
 
     - name: Install Code Review GPT
       shell: bash
-      run: npm install code-review-gpt
+      run: npm install ./packages/code-review-gpt
     
     - name: Run Code Review GPT
       shell: bash
